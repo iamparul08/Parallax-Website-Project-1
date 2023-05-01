@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#wrapper{
+    height: 100vh;          /* A good practice to keep the whole code in one container (which is wrapper). Now, height of this is equals to viewport which is 100vh*/
+    /*overflow-y: auto;*/       /* We want to scroll vertically, so "auto" */
+    overflow-x: hidden;     /* We do not need horizontal scroller */
+    perspective: 20px;      /* Since we need to play/ activate z-axis (3D); distance between z-plane and your eye. You can provide any value*/
+}
+
+.container{
+    position: relative; /*Absolute position: according to the Nearest possible/ positioned ancestor which is non-static. So, "background" will have absolute position, container has to be in Relative position.*/
+    height: 100%;
+    display: flex;              /*Making flex -> we can add below 2 properties to bring it (ADVENTURE text) in the center*/
+    justify-content: center;    /*To bring "ADVENNTURE" in the middle*/
+    align-items: center;        /*To bring "ADVENNTURE" in the middle*/
+    transform-style: preserve-3d;   /*Explicitly telling (since perspective is on) on which we gotta play our 3D game i.e. container; to get parallax effect and there'd be 2D effect*/
+    z-index: -1;        /*Handling layering in 3D - which layer will come on which one (overlapping) */
+}
+
+.background{
+    transform: translateZ(-40px) scale(5);   /*Setting distance from eyes and scaling to enlarge size*/
+    /* image-rendering: -webkit-optimize-contrast; */
+}
+
+.foreground{
+    transform: translateZ(-20px) scale(3);   /*Setting distance from eyes*/
+}
+
+.background, .foreground{
+    position: absolute;         /*overlapping*/
+    height: 100%;
+    width: 100%;
+    object-fit: cover;  /*Fit image in container - the object fit property is used to specify how an <img> or <video> should be resized to fit it's container*/
+    z-index: -1;    /*is the property which handles layering in 3D.*/
+}
+
+h1{
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10rem;
+    letter-spacing: 4px;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+section{
+    background-color: rgb(45, 45, 45);
+    color: white;
+    padding: 5rem 0;
+}
+
+.secHeading{
+    font-size: 5rem;
+    padding: 0 10rem;
+}
+
+.text{
+    font-size: 1.5rem;
+    padding: 0 10rem;
+    margin: 5rem 0;
+}
+
+.bg{
+    position: relative;
+    width: 100%;
+    background-attachment: fixed; /*Image will remain fixed and text can be scrolled. Else image will also scroll.*/
+    background-size: cover;    
+    background-position: center;
+    height: 500px;
+
+}
+
+.desc{
+    position: absolute;
+    background-color: white;
+    padding: 0.5rem 2.5rem;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateX(-50%);
+    color: black;
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+.bg1{
+    background-image: url(sport-1.jpg);
+}
+
+.bg2{
+    background-image: url(sport-2.jpg);
+}
+
+.bg3{
+    background-image: url(sport-3.jpg);
+}
